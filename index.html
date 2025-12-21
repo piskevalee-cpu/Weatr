@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weatr</title>
+    <!-- Favicon: primary SVG and fallback shortcut -->
+    <link rel="icon" href="images/cloud.svg" type="image/svg+xml">
+    <link rel="shortcut icon" href="images/cloud.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -50,6 +53,7 @@
         }
 
         .header-inner {
+            position: relative;
             width: 100%;
             max-width: 95%; 
             display: flex;
@@ -74,11 +78,15 @@
 
         /* HEADER ELEMENTS */
         .logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
             font-size: 20px; 
             font-weight: 600; 
             letter-spacing: 1.5px;
             text-transform: uppercase;
             color: #ffffff; 
+            text-align: center;
         }
         
         .location-info {
@@ -1639,4 +1647,3 @@
     </script>
 </body>
 </html>
-
