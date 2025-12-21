@@ -12,9 +12,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Theme color for mobile browser UI (gesture bar, status bar) -->
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <style>
         /* BASE CSS */
+        html {
+            background-color: #000000;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -77,19 +86,34 @@
             overflow-y: visible;
         }
 
-        /* CUSTOM SCROLLBAR */
+        /* CUSTOM SCROLLBAR - Desktop */
         ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
+            width: 8px;
+            height: 8px;
         }
 
         ::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.35);
         }
 
         ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-corner {
             background: transparent;
+        }
+
+        /* Firefox scrollbar */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.05);
         }
 
         /* HEADER ELEMENTS */
@@ -152,54 +176,29 @@
 
         @media (max-width: 600px) {
             .location {
-                max-width: 140px;
-                font-size: 13px;
-            }
-
-            /* Mobile header fixes */
-            .header-wrapper {
-                height: auto;
-                min-height: 70px;
-                padding: 12px 16px;
-            }
-
-            .header-inner {
-                flex-direction: column;
-                gap: 8px;
-            }
-
-            .logo {
-                position: static;
-                transform: none;
-                font-size: 18px;
-                order: 1;
-            }
-
-            .location-info {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .location-info:first-child {
-                order: 2;
-                justify-content: center;
-            }
-
-            .location-info:last-child {
-                order: 3;
-                justify-content: center;
-            }
-
-            .location-group {
-                gap: 8px;
-            }
-
-            .time {
+                max-width: 120px;
                 font-size: 12px;
             }
 
-            .container {
-                margin-top: 100px;
+            .header-wrapper {
+                padding: 0 12px;
+            }
+
+            .logo {
+                font-size: 14px;
+                letter-spacing: 1px;
+            }
+
+            .location-group {
+                gap: 6px;
+            }
+
+            .time {
+                font-size: 11px;
+            }
+
+            .location-time {
+                display: none;
             }
         }
 
@@ -463,6 +462,23 @@
                 -webkit-overflow-scrolling: touch;
             }
 
+            .week-grid::-webkit-scrollbar {
+                height: 3px;
+            }
+
+            .week-grid::-webkit-scrollbar-thumb {
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 3px;
+            }
+
+            .week-grid::-webkit-scrollbar-thumb:hover {
+                background: rgba(255, 255, 255, 0.25);
+            }
+
+            .week-grid::-webkit-scrollbar-track {
+                background: transparent;
+            }
+
             .week-card {
                 flex: 0 0 100px;
                 min-width: 100px;
@@ -508,12 +524,21 @@
         }
 
         .hourly-forecast::-webkit-scrollbar {
-            height: 4px;
+            height: 3px;
         }
 
         .hourly-forecast::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            transition: background 0.2s ease;
+        }
+
+        .hourly-forecast::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .hourly-forecast::-webkit-scrollbar-track {
+            background: transparent;
         }
 
         .hour-item {
@@ -1028,6 +1053,22 @@
 
         body.light-mode ::-webkit-scrollbar-thumb {
             background: rgba(0, 0, 0, 0.2);
+        }
+
+        body.light-mode ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.35);
+        }
+
+        body.light-mode ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        body.light-mode * {
+            scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.05);
+        }
+
+        html.light-mode {
+            background-color: #ffffff;
         }
 
         /* Smooth theme transition - applies to all elements */
@@ -1590,12 +1631,21 @@
             currentTheme = theme;
             localStorage.setItem('theme', theme);
 
-            // Simply toggle the light-mode class - CSS transitions handle the animation
+            // Toggle light-mode class on both body and html
+            const themeColor = theme === 'light' ? '#ffffff' : '#000000';
+
             if (theme === 'light') {
                 document.body.classList.add('light-mode');
+                document.documentElement.classList.add('light-mode');
             } else {
                 document.body.classList.remove('light-mode');
+                document.documentElement.classList.remove('light-mode');
             }
+
+            // Update theme-color meta tags for mobile browser UI
+            document.querySelectorAll('meta[name="theme-color"]').forEach(meta => {
+                meta.setAttribute('content', themeColor);
+            });
 
             document.querySelectorAll('#theme-options button').forEach(btn => {
                 btn.classList.remove('selected');
