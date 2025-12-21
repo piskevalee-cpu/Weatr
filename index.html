@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,7 +34,11 @@
         }
 
         /* Ensure Inter is used and bold text renders with correct weight */
-        strong, b { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-weight: 700; }
+        strong,
+        b {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-weight: 700;
+        }
 
         /* HEADER FISSO */
         .header-wrapper {
@@ -44,7 +49,7 @@
             height: 70px;
             z-index: 1000;
             /* Reso leggermente più trasparente */
-            background: rgba(0, 0, 0, 0.2); 
+            background: rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             display: flex;
@@ -56,7 +61,7 @@
         .header-inner {
             position: relative;
             width: 100%;
-            max-width: 95%; 
+            max-width: 95%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -66,53 +71,69 @@
         .container {
             width: 100%;
             max-width: 95%;
-            margin-top: 80px; 
+            margin-top: 80px;
             padding: 20px 10px;
             padding-bottom: 40px;
             overflow-y: visible;
         }
-        
+
         /* CUSTOM SCROLLBAR */
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 10px; }
-        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
 
         /* HEADER ELEMENTS */
         .logo {
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 20px; 
-            font-weight: 600; 
+            font-size: 20px;
+            font-weight: 600;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            color: #ffffff; 
+            color: #ffffff;
             text-align: center;
         }
-        
+
         .location-info {
             display: flex;
             align-items: center;
-            flex: 1; 
+            flex: 1;
         }
-        
-        .location-info:first-child { justify-content: flex-start; }
-        .location-info:last-child { justify-content: flex-end; }
+
+        .location-info:first-child {
+            justify-content: flex-start;
+        }
+
+        .location-info:last-child {
+            justify-content: flex-end;
+        }
 
         .time {
             font-size: 14px;
             font-weight: 500;
-            color: #ccc; /* Orario locale Utente */
+            color: #ccc;
+            /* Orario locale Utente */
             letter-spacing: 0.5px;
         }
 
         /* STILE PER L'ORARIO DEL LUOGO CARICATO (Grigetto e magro) */
         .location-time {
-            color: #888; 
-            font-weight: 400; 
-            margin-left: 8px; 
+            color: #888;
+            font-weight: 400;
+            margin-left: 8px;
         }
-        
+
         .location-group {
             display: flex;
             align-items: center;
@@ -128,36 +149,89 @@
             text-overflow: ellipsis;
             white-space: nowrap;
         }
-        
+
         @media (max-width: 600px) {
             .location {
                 max-width: 140px;
                 font-size: 13px;
             }
+
+            /* Mobile header fixes */
+            .header-wrapper {
+                height: auto;
+                min-height: 70px;
+                padding: 12px 16px;
+            }
+
+            .header-inner {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .logo {
+                position: static;
+                transform: none;
+                font-size: 18px;
+                order: 1;
+            }
+
+            .location-info {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .location-info:first-child {
+                order: 2;
+                justify-content: center;
+            }
+
+            .location-info:last-child {
+                order: 3;
+                justify-content: center;
+            }
+
+            .location-group {
+                gap: 8px;
+            }
+
+            .time {
+                font-size: 12px;
+            }
+
+            .container {
+                margin-top: 100px;
+            }
         }
-        
+
         /* Pulsante Search */
-        .search-button { 
+        .search-button {
             background: none;
             border: none;
             color: #aaa;
             cursor: pointer;
             transition: color 0.2s ease;
-            
+
             /* Dimensione del contenitore per centrare bene l'icona */
-            width: 22px; 
+            width: 22px;
             height: 22px;
-            padding: 0; 
-            display: flex; /* Uso flexbox per centraggio */
+            padding: 0;
+            display: flex;
+            /* Uso flexbox per centraggio */
             align-items: center;
             justify-content: center;
             line-height: 1;
         }
 
-        .search-button:hover { color: #fff; }
-        
-        .search-icon { width: 18px; height: 18px; display: block; } 
-        
+        .search-button:hover {
+            color: #fff;
+        }
+
+        .search-icon {
+            width: 18px;
+            height: 18px;
+            display: block;
+        }
+
         /* SECTIONS & DETAILS */
         .main-section {
             margin-bottom: 40px;
@@ -173,19 +247,19 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        
+
         .current-details-section {
             padding-bottom: 40px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
-        
+
         .details-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); 
+            grid-template-columns: repeat(4, 1fr);
             gap: 15px;
             margin-top: 16px;
         }
-        
+
         .detail-card {
             background: rgba(255, 255, 255, 0.04);
             padding: 20px;
@@ -196,10 +270,24 @@
             min-height: 90px;
             transition: background 0.2s;
         }
-        
-        .detail-card:hover { background: rgba(255, 255, 255, 0.08); }
-        .detail-label { font-size: 12px; color: #888; font-weight: 500; margin-bottom: 8px; text-transform: uppercase; }
-        .detail-value { font-size: 22px; font-weight: 700; color: #fff; }
+
+        .detail-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .detail-label {
+            font-size: 12px;
+            color: #888;
+            font-weight: 500;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .detail-value {
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+        }
 
         .comparison {
             font-size: 36px;
@@ -211,15 +299,18 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .description { font-size: 16px; color: #777; }
+        .description {
+            font-size: 16px;
+            color: #777;
+        }
 
         .chart-section {
             padding: 30px 0;
-            margin-bottom: 40px; 
+            margin-bottom: 40px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .chart-container { 
+        .chart-container {
             position: relative;
             background: rgba(255, 255, 255, 0.02);
             border-radius: 12px;
@@ -227,14 +318,20 @@
             height: 350px;
             width: 100%;
         }
-        
+
         /* PERIODS (Daily Breakdown) */
-        .periods { margin-top: 24px; padding-bottom: 40px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+        .periods {
+            margin-top: 24px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
         .period-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
         }
+
         .period-row {
             display: flex;
             justify-content: space-between;
@@ -243,29 +340,75 @@
             background: rgba(255, 255, 255, 0.03);
             border-radius: 8px;
         }
-        .period-row:hover { background: rgba(255, 255, 255, 0.05); }
-        
-        .period-name { font-size: 14px; color: #bbb; }
-        .period-temp-group { display: flex; align-items: center; gap: 15px; }
-        .period-temp { display: flex; align-items: center; gap: 8px; }
-        .temp-value { font-size: 16px; font-weight: 600; color: #fff; }
-        .period-icon { width: 18px; height: 18px; color: #888; }
-        .period-diff { font-size: 13px; font-weight: 500; }
-        .diff-warmer { color: #ff6b6b; }
-        .diff-colder { color: #4dabf7; }
-        .diff-same { color: #555; }
+
+        .period-row:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .period-name {
+            font-size: 14px;
+            color: #bbb;
+        }
+
+        .period-temp-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .period-temp {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .temp-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .period-icon {
+            width: 18px;
+            height: 18px;
+            color: #888;
+        }
+
+        .period-diff {
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .diff-warmer {
+            color: #ff6b6b;
+        }
+
+        .diff-colder {
+            color: #4dabf7;
+        }
+
+        .diff-same {
+            color: #555;
+        }
 
         /* WEEKLY FORECAST */
-        .weekly-section { margin-top: 24px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .weekly-section {
+            margin-top: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
         .week-grid {
             display: grid;
-            grid-template-columns: repeat(7, 1fr); /* Force 7 columns */
+            grid-template-columns: repeat(7, 1fr);
+            /* Force 7 columns */
             gap: 12px;
             margin-top: 12px;
             align-items: stretch;
         }
+
         .week-card {
-            background: rgba(255,255,255,0.03);
+            background: rgba(255, 255, 255, 0.03);
             padding: 12px;
             border-radius: 10px;
             text-align: center;
@@ -277,57 +420,128 @@
             min-height: 110px;
             transition: background 0.18s ease, box-shadow 0.18s ease;
         }
+
         /* Hover now matches .period-row (no lift, subtle bg change) */
         .week-card:hover {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
             box-shadow: none;
         }
+
         .week-card--today {
-            border: none; /* no border for today's card per user request */
+            border: none;
+            /* no border for today's card per user request */
         }
+
         .week-card--today:hover {
-            background: rgba(255,255,255,0.06);
+            background: rgba(255, 255, 255, 0.06);
         }
-        .week-day { font-size: 13px; color: #bbb; }
-        .week-icon { width: 26px; height: 26px; color: #888; }
-        .week-temps { font-size: 14px; font-weight: 600; color: #fff; }
+
+        .week-day {
+            font-size: 13px;
+            color: #bbb;
+        }
+
+        .week-icon {
+            width: 26px;
+            height: 26px;
+            color: #888;
+        }
+
+        .week-temps {
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+        }
+
         @media (max-width: 900px) {
             .week-grid {
-                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                display: flex;
+                flex-wrap: nowrap;
                 overflow-x: auto;
-                grid-auto-flow: column;
+                gap: 10px;
+                padding-bottom: 8px;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .week-card {
+                flex: 0 0 100px;
+                min-width: 100px;
             }
         }
+
         @media (max-width: 600px) {
-            .week-grid { gap: 8px; }
+            .week-grid {
+                gap: 8px;
+            }
+
+            .week-card {
+                flex: 0 0 90px;
+                min-width: 90px;
+                padding: 10px 8px;
+            }
+
+            .week-day {
+                font-size: 12px;
+            }
+
+            .week-temps {
+                font-size: 13px;
+            }
+
+            .week-icon {
+                width: 22px;
+                height: 22px;
+            }
         }
-        
+
         /* HOURLY & SUMMARY */
-        .extra-section { padding: 30px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+        .extra-section {
+            padding: 30px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
         .hourly-forecast {
             display: flex;
             overflow-x: auto;
             gap: 10px;
             padding-bottom: 10px;
         }
-        .hourly-forecast::-webkit-scrollbar { height: 4px; }
-        .hourly-forecast::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.08); border-radius: 10px; }
 
-        .hour-item { 
-            display: flex; flex-direction: column; align-items: center; 
-            padding: 15px; 
-            background: rgba(255, 255, 255, 0.03); 
-            border-radius: 10px; 
-            min-width: 90px; 
+        .hourly-forecast::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .hourly-forecast::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+        }
+
+        .hour-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            min-width: 90px;
             flex-shrink: 0;
         }
-        .hour-time { font-size: 12px; color: #888; margin-bottom: 8px; }
-        .hour-temp { font-size: 18px; font-weight: 600; }
+
+        .hour-time {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 8px;
+        }
+
+        .hour-temp {
+            font-size: 18px;
+            font-weight: 600;
+        }
 
         /* FOOTER & CONTACTS */
-        .footer { 
-            margin-top: 40px; 
-            padding-top: 20px; 
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
             text-align: center;
             font-size: 14px;
             color: #ccc;
@@ -342,76 +556,156 @@
         }
 
         .contact-info-simple a {
-            color: #fff; 
+            color: #fff;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.2s;
         }
 
         .contact-info-simple a:hover {
-            color: #aaa; 
+            color: #aaa;
         }
 
-        .credits-section { margin-top: 20px; font-size: 12px; color: #444; }
-        .credits-section a { color: #666; text-decoration: none; }
+        .credits-section {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #444;
+        }
+
+        .credits-section a {
+            color: #666;
+            text-decoration: none;
+        }
 
 
         /* LOADING & MODAL */
-        .loading, .error { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 80vh; width: 100%;}
-        .spinner { width: 50px; height: 50px; border: 3px solid rgba(255, 255, 255, 0.1); border-top-color: #fff; border-radius: 50%; animation: spin 0.8s linear infinite; margin-bottom: 20px; }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        
+        .loading,
+        .error {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            width: 100%;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
         /* Generic Button Style Update (Non-Modal) */
         button {
-            padding: 12px 24px; 
-            background: rgba(255, 255, 255, 0.08); 
-            color: #fff; 
-            border: 1px solid rgba(255, 255, 255, 0.1); 
-            border-radius: 8px; 
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
             cursor: pointer;
             transition: background 0.2s;
         }
+
         button:hover {
-             background: rgba(255, 255, 255, 0.15); 
+            background: rgba(255, 255, 255, 0.15);
         }
 
-        .hidden { display: none; }
-        
+        .hidden {
+            display: none;
+        }
+
         /* MODAL ANIMATION (Migliorata) */
-        .modal-overlay { 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(0, 0, 0, 0.8); z-index: 2000; display: flex; 
-            align-items: center; justify-content: center; opacity: 0; 
-            visibility: hidden; transition: opacity 0.3s, visibility 0.3s; 
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
         }
-        .modal-overlay.active { opacity: 1; visibility: visible; }
 
-        .modal-content { 
-            background: rgba(0, 0, 0, 0.9); 
-            backdrop-filter: blur(8px); 
-            padding: 30px; 
-            border-radius: 16px; 
-            width: 90%; 
-            max-width: 500px; 
-            max-height: 80vh; 
-            overflow-y: auto; 
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(8px);
+            padding: 30px;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            transform: scale(0.95); /* Animazione di entrata */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transform: scale(0.95);
+            /* Animazione di entrata */
             transition: transform 0.3s ease-out;
         }
-        .modal-overlay.active .modal-content { 
-            transform: scale(1); 
-        }
-        
-        .modal-header { display: flex; justify-content: space-between; margin-bottom: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 16px; }
-        .modal-close-btn { background: none; border: none; font-size: 24px; color: #fff; cursor: pointer; padding: 0; }
 
-        .setting-group { margin-bottom: 30px; }
-        .setting-group h4 { font-size: 16px; color: #aaa; margin-bottom: 12px; font-weight: 500; }
-        .unit-options { display: flex; gap: 10px; flex-wrap: wrap; }
-        .unit-options button { flex: 1; min-width: 80px; padding: 10px; }
-        
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 16px;
+        }
+
+        .modal-close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .setting-group {
+            margin-bottom: 30px;
+        }
+
+        .setting-group h4 {
+            font-size: 16px;
+            color: #aaa;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .unit-options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .unit-options button {
+            flex: 1;
+            min-width: 80px;
+            padding: 10px;
+        }
+
         @media (max-width: 600px) {
             .unit-options button {
                 min-width: 70px;
@@ -419,12 +713,12 @@
                 font-size: 14px;
             }
         }
-        
-        .unit-options button.selected { 
-            background: rgba(255, 255, 255, 0.15); 
-            border-color: #fff; 
+
+        .unit-options button.selected {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #fff;
             color: #fff;
-            font-weight: 600; 
+            font-weight: 600;
         }
 
         /* Theme icon buttons (no box) */
@@ -441,7 +735,7 @@
         /* Selected state for theme icon buttons (dark) */
         .unit-options .theme-button.selected {
             background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255,255,255,0.08);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         /* Light mode overrides for theme icon buttons to remove box */
@@ -451,296 +745,334 @@
         }
 
         body.light-mode .unit-options .theme-button.selected {
-            background: rgba(0,0,0,0.06);
-            border: 1px solid rgba(0,0,0,0.08);
+            background: rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(0, 0, 0, 0.08);
         }
-        
+
         #city-search-status {
-            margin-top: 10px; 
+            margin-top: 10px;
             font-size: 14px;
             color: #ccc;
         }
 
         /* Input box formattato meglio */
-        #city-search-input { 
-            width: 100%; 
-            padding: 12px 16px; 
-            background: #111; 
-            border: 1px solid #444; 
-            color: #fff; 
-            border-radius: 8px; 
-            font-size: 16px; 
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
+        #city-search-input {
+            width: 100%;
+            padding: 12px 16px;
+            background: #111;
+            border: 1px solid #444;
+            color: #fff;
+            border-radius: 8px;
+            font-size: 16px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
         }
-        
-        #city-results-list { list-style:none; padding:0; margin-top:15px; transition: opacity 0.3s ease-out; }
-        .city-result-item { padding: 12px 10px; border-bottom: 1px solid #333; cursor: pointer; border-radius: 6px; }
-        .city-result-item:hover { background: rgba(255, 255, 255, 0.08); }
-        
+
+        #city-results-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 15px;
+            transition: opacity 0.3s ease-out;
+        }
+
+        .city-result-item {
+            padding: 12px 10px;
+            border-bottom: 1px solid #333;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        .city-result-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
         /* CLASSE PER DISSOLVENZA */
         #city-results-list.fade-out {
             opacity: 0;
-            pointer-events: none; /* Disabilita i click durante la dissolvenza */
+            pointer-events: none;
+            /* Disabilita i click durante la dissolvenza */
         }
 
         @media (max-width: 900px) {
-            .details-grid { grid-template-columns: repeat(2, 1fr); }
-            .container { max-width: 100%; padding: 15px; margin-top: 70px; }
+            .details-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .container {
+                max-width: 100%;
+                padding: 15px;
+                margin-top: 70px;
+            }
         }
 
-    /* LIGHT MODE */
-    body.light-mode {
-        background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
-        color: #000000;
-    }
+        /* LIGHT MODE */
+        body.light-mode {
+            background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+            color: #000000;
+        }
 
-    body.light-mode .header-wrapper {
-        background: rgba(255, 255, 255, 0.7);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-    }
+        body.light-mode .header-wrapper {
+            background: rgba(255, 255, 255, 0.7);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
 
-    body.light-mode .logo,
-    body.light-mode .location,
-    body.light-mode .time {
-        color: #000;
-    }
+        body.light-mode .logo,
+        body.light-mode .location,
+        body.light-mode .time {
+            color: #000;
+        }
 
-    body.light-mode .location-time {
-        color: #666;
-    }
+        body.light-mode .location-time {
+            color: #666;
+        }
 
-    body.light-mode .search-button {
-        color: #666;
-    }
+        body.light-mode .search-button {
+            color: #666;
+        }
 
-    body.light-mode .search-button:hover {
-        color: #000;
-    }
+        body.light-mode .search-button:hover {
+            color: #000;
+        }
 
-    body.light-mode .label {
-        color: #666;
-    }
+        body.light-mode .label {
+            color: #666;
+        }
 
-    body.light-mode .description {
-        color: #555;
-    }
+        body.light-mode .description {
+            color: #555;
+        }
 
-    body.light-mode .comparison {
-        background: linear-gradient(135deg, #000 0%, #333 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
+        body.light-mode .comparison {
+            background: linear-gradient(135deg, #000 0%, #333 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    body.light-mode .detail-card {
-        background: rgba(0, 0, 0, 0.04);
-    }
+        body.light-mode .detail-card {
+            background: rgba(0, 0, 0, 0.04);
+        }
 
-    body.light-mode .detail-card:hover {
-        background: rgba(0, 0, 0, 0.08);
-    }
+        body.light-mode .detail-card:hover {
+            background: rgba(0, 0, 0, 0.08);
+        }
 
-    body.light-mode .detail-label {
-        color: #666;
-    }
+        body.light-mode .detail-label {
+            color: #666;
+        }
 
-    body.light-mode .detail-value {
-        color: #000;
-    }
+        body.light-mode .detail-value {
+            color: #000;
+        }
 
-    body.light-mode .chart-container {
-        background: rgba(0, 0, 0, 0.02);
-    }
+        body.light-mode .chart-container {
+            background: rgba(0, 0, 0, 0.02);
+        }
 
-    body.light-mode .period-row,
-    body.light-mode .hour-item {
-        background: rgba(0, 0, 0, 0.03);
-    }
-    body.light-mode .week-card { background: rgba(0, 0, 0, 0.03); }
-    body.light-mode .week-day { color: #666; }
-    body.light-mode .week-temps { color: #000; }
-    /* Match hover with period-row in light mode */
-    body.light-mode .week-card:hover { background: rgba(0,0,0,0.06); box-shadow: none; }
-    body.light-mode .week-card--today { border: none; }
-    body.light-mode .week-card--today:hover { background: rgba(0,0,0,0.08); }
+        body.light-mode .period-row,
+        body.light-mode .hour-item {
+            background: rgba(0, 0, 0, 0.03);
+        }
 
-    body.light-mode .period-row:hover,
-    body.light-mode .hour-item:hover {
-        background: rgba(0, 0, 0, 0.06);
-    }
+        body.light-mode .week-card {
+            background: rgba(0, 0, 0, 0.03);
+        }
 
-    body.light-mode .period-name,
-    body.light-mode .hour-time {
-        color: #666;
-    }
+        body.light-mode .week-day {
+            color: #666;
+        }
 
-    body.light-mode .temp-value,
-    body.light-mode .hour-temp {
-        color: #000;
-    }
+        body.light-mode .week-temps {
+            color: #000;
+        }
 
-    body.light-mode .period-icon {
-        color: #666;
-    }
+        /* Match hover with period-row in light mode */
+        body.light-mode .week-card:hover {
+            background: rgba(0, 0, 0, 0.06);
+            box-shadow: none;
+        }
 
-    body.light-mode .main-section,
-    body.light-mode .current-details-section,
-    body.light-mode .chart-section,
-    body.light-mode .periods,
-    body.light-mode .extra-section {
-        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-    }
+        body.light-mode .week-card--today {
+            border: none;
+        }
 
-    body.light-mode .footer {
-        color: #666;
-    }
+        body.light-mode .week-card--today:hover {
+            background: rgba(0, 0, 0, 0.08);
+        }
 
-    body.light-mode .contact-info-simple a {
-        color: #000;
-    }
+        body.light-mode .period-row:hover,
+        body.light-mode .hour-item:hover {
+            background: rgba(0, 0, 0, 0.06);
+        }
 
-    body.light-mode .contact-info-simple a:hover {
-        color: #666;
-    }
+        body.light-mode .period-name,
+        body.light-mode .hour-time {
+            color: #666;
+        }
 
-    body.light-mode .credits-section {
-        color: #999;
-    }
+        body.light-mode .temp-value,
+        body.light-mode .hour-temp {
+            color: #000;
+        }
 
-    body.light-mode .credits-section a {
-        color: #666;
-    }
+        body.light-mode .period-icon {
+            color: #666;
+        }
 
-    body.light-mode .modal-overlay {
-        background: rgba(255, 255, 255, 0.8);
-    }
+        body.light-mode .main-section,
+        body.light-mode .current-details-section,
+        body.light-mode .chart-section,
+        body.light-mode .periods,
+        body.light-mode .extra-section {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
 
-    body.light-mode .modal-content {
-        background: rgba(255, 255, 255, 0.95);
-        border: 1px solid rgba(0, 0, 0, 0.1);
-    }
+        body.light-mode .footer {
+            color: #666;
+        }
 
-    body.light-mode .modal-header {
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    }
+        body.light-mode .contact-info-simple a {
+            color: #000;
+        }
 
-    body.light-mode .modal-close-btn,
-    body.light-mode .setting-group h4 {
-        color: #000;
-    }
+        body.light-mode .contact-info-simple a:hover {
+            color: #666;
+        }
 
-    /* Ensure modal close button has no box in light mode */
-    body.light-mode .modal-close-btn {
-        background: transparent;
-        border: none;
-        color: #000;
-        padding: 0;
-    }
-    body.light-mode .modal-close-btn:hover {
-        color: #666;
-    }
+        body.light-mode .credits-section {
+            color: #999;
+        }
 
-    /* Ensure header search button is clean in light mode */
-    body.light-mode .search-button {
-        background: transparent;
-        border: none;
-        color: #000;
-    }
-    body.light-mode .search-button:hover {
-        color: #000;
-        background: transparent;
-    }
+        body.light-mode .credits-section a {
+            color: #666;
+        }
 
-    body.light-mode #city-search-input {
-        background: #f5f5f5;
-        border: 1px solid #ccc;
-        color: #000;
-    }
+        body.light-mode .modal-overlay {
+            background: rgba(255, 255, 255, 0.8);
+        }
 
-    body.light-mode #city-search-status {
-        color: #666;
-    }
+        body.light-mode .modal-content {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
 
-    body.light-mode .city-result-item {
-        border-bottom: 1px solid #e0e0e0;
-    }
+        body.light-mode .modal-header {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
 
-    body.light-mode .city-result-item:hover {
-        background: rgba(0, 0, 0, 0.05);
-    }
+        body.light-mode .modal-close-btn,
+        body.light-mode .setting-group h4 {
+            color: #000;
+        }
 
-    body.light-mode button {
-        background: rgba(0, 0, 0, 0.08);
-        color: #000;
-        border: 1px solid rgba(0, 0, 0, 0.1);
-    }
+        /* Ensure modal close button has no box in light mode */
+        body.light-mode .modal-close-btn {
+            background: transparent;
+            border: none;
+            color: #000;
+            padding: 0;
+        }
 
-    body.light-mode button:hover {
-        background: rgba(0, 0, 0, 0.15);
-    }
+        body.light-mode .modal-close-btn:hover {
+            color: #666;
+        }
 
-    body.light-mode .unit-options button.selected {
-        background: rgba(0, 0, 0, 0.2);
-        border-color: #000;
-        color: #000;
-    }
+        /* Ensure header search button is clean in light mode */
+        body.light-mode .search-button {
+            background: transparent;
+            border: none;
+            color: #000;
+        }
 
-    body.light-mode .spinner {
-        border: 3px solid rgba(0, 0, 0, 0.1);
-        border-top-color: #000;
-    }
+        body.light-mode .search-button:hover {
+            color: #000;
+            background: transparent;
+        }
 
-    body.light-mode ::-webkit-scrollbar-thumb {
-        background: rgba(0, 0, 0, 0.2);
-    }
+        body.light-mode #city-search-input {
+            background: #f5f5f5;
+            border: 1px solid #ccc;
+            color: #000;
+        }
 
-    /* Smooth transition */
-    body {
-        transition: background 0.3s ease, color 0.3s ease, opacity 0.3s ease;
-    }
+        body.light-mode #city-search-status {
+            color: #666;
+        }
 
-    /* Per-element fade helpers (fade to solid black or white) */
-    .fade-smooth, .fade-smooth * {
-        transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, fill 180ms ease, stroke 180ms ease, box-shadow 180ms ease;
-    }
+        body.light-mode .city-result-item {
+            border-bottom: 1px solid #e0e0e0;
+        }
 
-    /* Fade everything to white */
-    .fade-to-white, .fade-to-white * {
-        color: #000 !important;
-        background-color: #fff !important;
-        border-color: #e6e6e6 !important;
-        fill: #000 !important;
-        stroke: #000 !important;
-        box-shadow: none !important;
-    }
+        body.light-mode .city-result-item:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
 
-    /* Fade everything to black */
-    .fade-to-black, .fade-to-black * {
-        color: #fff !important;
-        background-color: #000 !important;
-        border-color: rgba(255,255,255,0.08) !important;
-        fill: #fff !important;
-        stroke: #fff !important;
-        box-shadow: none !important;
-    }
+        body.light-mode button {
+            background: rgba(0, 0, 0, 0.08);
+            color: #000;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
 
+        body.light-mode button:hover {
+            background: rgba(0, 0, 0, 0.15);
+        }
+
+        body.light-mode .unit-options button.selected {
+            background: rgba(0, 0, 0, 0.2);
+            border-color: #000;
+            color: #000;
+        }
+
+        body.light-mode .spinner {
+            border: 3px solid rgba(0, 0, 0, 0.1);
+            border-top-color: #000;
+        }
+
+        body.light-mode ::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        /* Smooth theme transition - applies to all elements */
+        body,
+        body *,
+        .header-wrapper,
+        .detail-card,
+        .period-row,
+        .hour-item,
+        .week-card,
+        .chart-container,
+        .modal-content,
+        .modal-overlay,
+        button,
+        input,
+        a {
+            transition: background-color 300ms ease,
+                color 300ms ease,
+                border-color 300ms ease,
+                fill 300ms ease,
+                stroke 300ms ease;
+        }
     </style>
 </head>
+
 <body>
-    
+
     <div class="header-wrapper">
         <div class="header-inner">
             <div class="location-info">
                 <div class="time" id="time">--:--</div>
             </div>
-            
+
             <div class="logo">Weatr</div>
 
             <div class="location-info">
                 <div class="location-group">
                     <div class="location" id="location">Detecting...</div>
-                    
+
                     <button class="search-button" onclick="openSearchModal()" title="Search City / Settings">
-                        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8" />
+                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                        </svg>
                     </button>
                 </div>
             </div>
@@ -759,13 +1091,13 @@
         </div>
 
         <div id="content" class="hidden">
-            
+
             <div class="main-section">
                 <div class="label">Today's weather is</div>
                 <div class="comparison" id="comparison"></div>
                 <div class="description" id="description"></div>
             </div>
-            
+
             <div class="current-details-section">
                 <div class="label">Current Details</div>
                 <div class="details-grid">
@@ -805,7 +1137,7 @@
 
             <div class="chart-section">
                 <div class="label">Temperature Trend (Max/Min/Avg 7 Days)</div>
-                <div class="chart-container"> 
+                <div class="chart-container">
                     <canvas id="temp-chart"></canvas>
                 </div>
             </div>
@@ -827,22 +1159,24 @@
 
                 <div class="credits-section">
                     Weather Data from <a href="https://open-meteo.com/" target="_blank">Open-Meteo</a><br>
-                    Geolocation <a href="https://www.bigdatacloud.com/" target="_blank">BigDataCloud</a> | Geocoding <a href="https://nominatim.openstreetmap.org/" target="_blank">Nominatim</a>
+                    Geolocation <a href="https://www.bigdatacloud.com/" target="_blank">BigDataCloud</a> | Geocoding <a
+                        href="https://nominatim.openstreetmap.org/" target="_blank">Nominatim</a>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <div id="search-modal" class="modal-overlay" onclick="closeModal(event, 'search-modal')">
         <div class="modal-content" onclick="event.stopPropagation()">
             <div class="modal-header">
                 <h3>Settings & Search</h3>
                 <button class="modal-close-btn" onclick="closeModal(null, 'search-modal')">&times;</button>
             </div>
-            
+
             <div class="setting-group">
                 <h4>Search City</h4>
-                <input type="text" id="city-search-input" placeholder="Start typing city name..." onkeyup="handleCitySearchInput(event)">
+                <input type="text" id="city-search-input" placeholder="Start typing city name..."
+                    onkeyup="handleCitySearchInput(event)">
                 <div id="city-search-status"></div>
                 <div id="city-results-container">
                     <ul id="city-results-list"></ul>
@@ -857,7 +1191,7 @@
                     <button data-unit="K" onclick="setTemperatureUnit('K')">K</button>
                 </div>
             </div>
-            
+
             <div class="setting-group">
                 <h4>Wind Speed Unit</h4>
                 <div class="unit-options" id="wind-unit-options">
@@ -871,12 +1205,14 @@
                 <h4>Theme</h4>
                 <div class="unit-options" id="theme-options">
                     <button class="theme-button" data-theme="dark" onclick="setTheme('dark')" title="Dark Mode">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                         </svg>
                     </button>
                     <button class="theme-button" data-theme="light" onclick="setTheme('light')" title="Light Mode">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="5"></circle>
                             <line x1="12" y1="1" x2="12" y2="3"></line>
                             <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -895,19 +1231,19 @@
 
     <script>
         // *** JAVASCRIPT LOGIC ***
-        let myChart = null; 
+        let myChart = null;
         const NOMINATIM_API = "https://nominatim.openstreetmap.org/search";
-        let searchTimeout; 
-        
-        let currentUnit = localStorage.getItem('tempUnit') || 'C'; 
+        let searchTimeout;
+
+        let currentUnit = localStorage.getItem('tempUnit') || 'C';
         let currentWindUnit = localStorage.getItem('windUnit') || 'km/h';
         let currentTheme = localStorage.getItem('theme') || 'dark';
-        let rawWeatherData = null; 
+        let rawWeatherData = null;
         let currentLatitude = null;
         let currentLongitude = null;
         let currentLocationName = null;
-        let currentLoadedTimezone = null; 
-        
+        let currentLoadedTimezone = null;
+
         // Determina il fuso orario locale dell'utente all'inizio
         const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
@@ -937,7 +1273,7 @@
             if (code >= 71 && code <= 77) return 'Snowy';
             return 'Variable Conditions';
         }
-        
+
         const periodNames = {
             'morning': 'Morning',
             'afternoon': 'Afternoon',
@@ -950,16 +1286,16 @@
             if (toUnit === 'C') {
                 return Math.round(temp);
             } else if (toUnit === 'F') {
-                return Math.round((temp * 9/5) + 32);
+                return Math.round((temp * 9 / 5) + 32);
             } else if (toUnit === 'K') {
                 return Math.round(temp + 273.15);
             }
-            return Math.round(temp); 
+            return Math.round(temp);
         }
-        
+
         function getUnitSymbol() {
             if (currentUnit === 'C' || currentUnit === 'F') return `°${currentUnit}`;
-            if (currentUnit === 'K') return ' K'; 
+            if (currentUnit === 'K') return ' K';
             return '°C';
         }
 
@@ -969,9 +1305,9 @@
             } else if (toUnit === 'mph') {
                 return Math.round(speedKmH / 1.60934);
             } else if (toUnit === 'm/s') {
-                return (speedKmH / 3.6).toFixed(1); 
-            } 
-            return Math.round(speedKmH); 
+                return (speedKmH / 3.6).toFixed(1);
+            }
+            return Math.round(speedKmH);
         }
 
         function getWindUnitSymbol() {
@@ -987,7 +1323,7 @@
             document.getElementById('error').classList.add('hidden');
             document.getElementById('content').classList.add('hidden');
             document.querySelector('.loading-text') && (document.querySelector('.loading-text').textContent = "Loading weather data...");
-            
+
             if (myChart) {
                 myChart.destroy();
                 myChart = null;
@@ -1011,16 +1347,16 @@
         // FUNZIONE AGGIORNATA PER L'OROLOGIO IN TEMPO REALE E LOGICA DI NASCONDI
         function updateTime() {
             const now = new Date();
-            
+
             // 1. Orario Locale Utente
-            const userTimeString = now.toLocaleTimeString('en-US', { 
-                hour: '2-digit', 
+            const userTimeString = now.toLocaleTimeString('en-US', {
+                hour: '2-digit',
                 minute: '2-digit',
-                hour12: true 
+                hour12: true
             }).replace(' ', '');
-            
+
             let timeOutput = userTimeString;
-            
+
             // 2. Orario del Luogo Caricato (se disponibile E se diverso da quello utente)
             if (currentLoadedTimezone && currentLoadedTimezone !== userTimezone) {
                 try {
@@ -1031,7 +1367,7 @@
                         hour12: true,
                         timeZone: currentLoadedTimezone
                     }).replace(' ', '');
-                    
+
                     timeOutput += `<span class="location-time"> | ${locationDate}</span>`;
                 } catch (e) {
                     console.warn("Could not format location time for timezone:", currentLoadedTimezone, e);
@@ -1044,7 +1380,7 @@
         // Funzione usata solo all'inizio per caricare i dati
         async function getLocationAndWeather() {
             showLoading();
-            
+
             if (!navigator.geolocation) {
                 showError('Geolocation not supported by your browser.');
                 return;
@@ -1069,20 +1405,20 @@
             clearTimeout(searchTimeout);
             const cityName = event.target.value.trim();
             const resultsList = document.getElementById('city-results-list');
-            
-            if (cityName.length < 1) { 
+
+            if (cityName.length < 1) {
                 document.getElementById('city-search-status').textContent = '';
                 resultsList.classList.add('fade-out');
                 // Aspetta che la dissolvenza finisca prima di svuotare
                 setTimeout(() => {
                     resultsList.innerHTML = '';
                     resultsList.classList.remove('fade-out');
-                }, 300); 
+                }, 300);
                 return;
             }
-            
+
             resultsList.classList.add('fade-out'); // Inizia la dissolvenza mentre si aspetta il timeout
-            
+
             searchTimeout = setTimeout(() => {
                 fetchCityResults(cityName);
             }, 500);
@@ -1091,30 +1427,30 @@
         async function fetchCityResults(cityName) {
             const statusElement = document.getElementById('city-search-status');
             const resultsList = document.getElementById('city-results-list');
-            
+
             statusElement.textContent = "Searching...";
-            
+
             try {
                 const geoUrl = `${NOMINATIM_API}?q=${encodeURIComponent(cityName)}&format=json&limit=5&addressdetails=1&extratags=1&accept-language=en`;
                 const response = await fetch(geoUrl);
                 const data = await response.json();
 
                 // Assicurati che il contenuto vecchio sia scomparso prima di mostrare il nuovo
-                await new Promise(resolve => setTimeout(resolve, 300)); 
-                resultsList.innerHTML = ''; 
+                await new Promise(resolve => setTimeout(resolve, 300));
+                resultsList.innerHTML = '';
                 resultsList.classList.remove('fade-out'); // Rimuovi la dissolvenza per i nuovi risultati
 
                 if (data && data.length > 0) {
                     statusElement.textContent = `Found ${data.length} results. Click to load.`;
-                    
+
                     data.forEach(result => {
                         const li = document.createElement('li');
                         li.className = 'city-result-item';
-                        
+
                         const nameParts = [];
                         if (result.localname) nameParts.push(result.localname);
                         else if (result.name) nameParts.push(result.name);
-                        
+
                         const address = result.address;
                         const mainCity = address.city || address.town || address.village;
                         if (mainCity && mainCity !== result.name) nameParts.push(mainCity);
@@ -1123,15 +1459,15 @@
                         if (address.country) nameParts.push(address.country);
 
                         const displayName = nameParts.filter((v, i, a) => a.indexOf(v) === i && v).join(', ');
-                        
+
                         li.textContent = displayName;
                         li.onclick = () => loadSelectedCity(result.lat, result.lon, displayName);
                         resultsList.appendChild(li);
                     });
-                    
+
                     // Forza il reflow e ri-applica l'opacità 1
                     resultsList.style.opacity = 0;
-                    void resultsList.offsetWidth; 
+                    void resultsList.offsetWidth;
                     resultsList.style.opacity = 1;
 
                 } else {
@@ -1160,7 +1496,7 @@
         async function fetchWeather(lat, lon, locationName = null) {
             try {
                 console.debug('fetchWeather called with', lat, lon, 'locationName:', locationName);
-                if (!locationName || locationName.includes('Unknown Location')) { 
+                if (!locationName || locationName.includes('Unknown Location')) {
                     try {
                         const geoResponse = await fetch(
                             `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`
@@ -1193,21 +1529,21 @@
                 } else {
                     currentLocationName = locationName;
                 }
-                
+
                 const weatherResponse = await fetch(
                     `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&past_days=7&hourly=temperature_2m,weathercode,wind_speed_10m,relative_humidity_2m&daily=temperature_2m_max,temperature_2m_min,weathercode&current_weather=true&timezone=auto`
                 );
                 const data = await weatherResponse.json();
 
                 if (!data || !data.daily || data.daily.time.length < 8) {
-                     throw new Error("Incomplete weather data or not available for the requested period.");
+                    throw new Error("Incomplete weather data or not available for the requested period.");
                 }
-                
-                rawWeatherData = data; 
+
+                rawWeatherData = data;
                 currentLoadedTimezone = data.timezone; // SALVA IL FUSO ORARIO
-                
+
                 processWeatherData(rawWeatherData);
-                renderHistoricalChart(rawWeatherData); 
+                renderHistoricalChart(rawWeatherData);
                 updateTime(); // Aggiorna l'orario immediatamente
                 showContent();
             } catch (error) {
@@ -1215,12 +1551,12 @@
                 showError('Unable to retrieve weather data. Please try again later.');
             }
         }
-        
+
         // --- UNIT SETTERS AND MODAL ---
         function setTemperatureUnit(unit) {
             currentUnit = unit;
             localStorage.setItem('tempUnit', unit);
-            
+
             document.querySelectorAll('#temp-unit-options button').forEach(btn => {
                 btn.classList.remove('selected');
                 if (btn.dataset.unit === unit) {
@@ -1230,14 +1566,14 @@
 
             if (rawWeatherData) {
                 processWeatherData(rawWeatherData);
-                renderHistoricalChart(rawWeatherData); 
+                renderHistoricalChart(rawWeatherData);
             }
         }
-        
+
         function setWindUnit(unit) {
             currentWindUnit = unit;
             localStorage.setItem('windUnit', unit);
-            
+
             document.querySelectorAll('#wind-unit-options button').forEach(btn => {
                 btn.classList.remove('selected');
                 if (btn.dataset.unit === currentWindUnit) {
@@ -1254,59 +1590,35 @@
             currentTheme = theme;
             localStorage.setItem('theme', theme);
 
-            const FADE_MS = 160;
-
-            const applyThemeAndRender = () => {
-                if (theme === 'light') {
-                    document.body.classList.add('light-mode');
-                } else {
-                    document.body.classList.remove('light-mode');
-                }
-
-                document.querySelectorAll('#theme-options button').forEach(btn => {
-                    btn.classList.remove('selected');
-                    if (btn.dataset.theme === theme) {
-                        btn.classList.add('selected');
-                    }
-                });
-
-                if (rawWeatherData) {
-                    renderHistoricalChart(rawWeatherData);
-                }
-            };
-
-            if (!animate) {
-                applyThemeAndRender();
-                return;
+            // Simply toggle the light-mode class - CSS transitions handle the animation
+            if (theme === 'light') {
+                document.body.classList.add('light-mode');
+            } else {
+                document.body.classList.remove('light-mode');
             }
 
-            // Fade elements to a solid (white for light, black for dark), then apply theme and fade back
-            const toWhite = theme === 'light';
-            document.body.classList.add('fade-smooth');
-            document.body.classList.add(toWhite ? 'fade-to-white' : 'fade-to-black');
+            document.querySelectorAll('#theme-options button').forEach(btn => {
+                btn.classList.remove('selected');
+                if (btn.dataset.theme === theme) {
+                    btn.classList.add('selected');
+                }
+            });
 
-            setTimeout(() => {
-                // Apply the theme while elements are the solid color
-                applyThemeAndRender();
-
-                // Small delay to let DOM update, then remove fade classes to reveal final theme
-                setTimeout(() => {
-                    document.body.classList.remove(toWhite ? 'fade-to-white' : 'fade-to-black');
-                    // keep .fade-smooth for subsequent transitions
-                }, 60);
-            }, FADE_MS);
+            if (rawWeatherData) {
+                renderHistoricalChart(rawWeatherData);
+            }
         }
 
         function openSearchModal() {
             document.getElementById('search-modal').classList.add('active');
-            
+
             document.querySelectorAll('#temp-unit-options button').forEach(btn => {
                 btn.classList.remove('selected');
                 if (btn.dataset.unit === currentUnit) {
                     btn.classList.add('selected');
                 }
             });
-            
+
             document.querySelectorAll('#wind-unit-options button').forEach(btn => {
                 btn.classList.remove('selected');
                 if (btn.dataset.unit === currentWindUnit) {
@@ -1325,10 +1637,10 @@
         }
 
         function closeModal(event, modalId) {
-             const modal = document.getElementById(modalId);
-             if (modal && (!event || event.target === modal)) {
+            const modal = document.getElementById(modalId);
+            if (modal && (!event || event.target === modal)) {
                 modal.classList.remove('active');
-                
+
                 // Pulisci i risultati di ricerca alla chiusura
                 const resultsList = document.getElementById('city-results-list');
                 resultsList.classList.add('fade-out');
@@ -1336,7 +1648,7 @@
                     resultsList.innerHTML = '';
                     resultsList.classList.remove('fade-out');
                 }, 300);
-                 
+
                 document.getElementById('city-search-input').value = '';
                 document.getElementById('city-search-status').textContent = '';
             }
@@ -1347,7 +1659,7 @@
             const dailyData = data.daily;
             const totalDays = data.daily.time.length;
             const unitSymbol = getUnitSymbol();
-            
+
             const labels = dailyData.time.map(dateString => {
                 const date = new Date(dateString);
                 if (dateString === data.daily.time[totalDays - 1]) return 'Today';
@@ -1357,89 +1669,89 @@
             const maxTemps = dailyData.temperature_2m_max.map(t => convertTemperature(t, currentUnit));
             const minTemps = dailyData.temperature_2m_min.map(t => convertTemperature(t, currentUnit));
             const avgTemps = dailyData.time.map((_, i) => Math.round((maxTemps[i] + minTemps[i]) / 2));
-            
-            const maxColor = 'rgba(255, 107, 107, 1)'; 
+
+            const maxColor = 'rgba(255, 107, 107, 1)';
             const minColor = 'rgba(77, 171, 247, 1)';
-            const avgColor = 'rgba(255, 255, 255, 1)'; 
+            const avgColor = 'rgba(255, 255, 255, 1)';
 
             const ctx = document.getElementById('temp-chart').getContext('2d');
             if (myChart) { myChart.destroy(); }
-            
+
             myChart = new Chart(ctx, {
                 type: 'line',
                 data: {
                     labels: labels,
                     datasets: [
-                        { 
-                            label: `Max (${unitSymbol})`, 
-                            data: maxTemps, 
-                            borderColor: maxColor, 
-                            backgroundColor: 'rgba(255, 107, 107, 0.2)', 
-                            fill: false, 
-                            tension: 0.2, 
-                            pointRadius: 5, 
-                            pointHoverRadius: 7, 
+                        {
+                            label: `Max (${unitSymbol})`,
+                            data: maxTemps,
+                            borderColor: maxColor,
+                            backgroundColor: 'rgba(255, 107, 107, 0.2)',
+                            fill: false,
+                            tension: 0.2,
+                            pointRadius: 5,
+                            pointHoverRadius: 7,
                             pointBackgroundColor: maxTemps.map((_, i) => i === totalDays - 1 ? '#fff' : maxColor),
-                            hidden: false 
+                            hidden: false
                         },
-                         { 
-                            label: `Avg (${unitSymbol})`, 
-                            data: avgTemps, 
-                            borderColor: avgColor, 
-                            backgroundColor: 'transparent', 
-                            fill: false, 
-                            tension: 0.2, 
-                            pointRadius: 3, 
-                            pointHoverRadius: 5, 
-                            borderWidth: 3, 
+                        {
+                            label: `Avg (${unitSymbol})`,
+                            data: avgTemps,
+                            borderColor: avgColor,
+                            backgroundColor: 'transparent',
+                            fill: false,
+                            tension: 0.2,
+                            pointRadius: 3,
+                            pointHoverRadius: 5,
+                            borderWidth: 3,
                             pointBackgroundColor: avgColor,
-                            hidden: false 
+                            hidden: false
                         },
-                        { 
-                            label: `Min (${unitSymbol})`, 
-                            data: minTemps, 
-                            borderColor: minColor, 
-                            backgroundColor: 'rgba(77, 171, 247, 0.2)', 
-                            fill: false, 
-                            tension: 0.2, 
-                            borderDash: [5, 5], 
-                            pointRadius: 5, 
-                            pointHoverRadius: 7, 
+                        {
+                            label: `Min (${unitSymbol})`,
+                            data: minTemps,
+                            borderColor: minColor,
+                            backgroundColor: 'rgba(77, 171, 247, 0.2)',
+                            fill: false,
+                            tension: 0.2,
+                            borderDash: [5, 5],
+                            pointRadius: 5,
+                            pointHoverRadius: 7,
                             pointBackgroundColor: minTemps.map((_, i) => i === totalDays - 1 ? '#fff' : minColor),
-                            hidden: false 
+                            hidden: false
                         }
                     ]
                 },
                 options: {
-                    responsive: true, 
-                    maintainAspectRatio: false, 
+                    responsive: true,
+                    maintainAspectRatio: false,
                     animation: {
-                        duration: 800, 
-                        easing: 'easeOutQuad' 
+                        duration: 800,
+                        easing: 'easeOutQuad'
                     },
-                    plugins: { 
-                        legend: { 
-                            display: true, 
-                            labels: { 
-                                color: '#aaa', 
-                                boxWidth: 10, 
+                    plugins: {
+                        legend: {
+                            display: true,
+                            labels: {
+                                color: '#aaa',
+                                boxWidth: 10,
                                 padding: 20,
                                 onClick: (e, legendItem, legend) => {
                                     const index = legendItem.datasetIndex;
                                     const ci = legend.chart;
                                     ci.isDatasetVisible(index) ? ci.hide(index) : ci.show(index);
-                                    setTimeout(() => ci.update(), 100); 
+                                    setTimeout(() => ci.update(), 100);
                                 }
-                            } 
-                        }, 
-                        title: { display: false } 
+                            }
+                        },
+                        title: { display: false }
                     },
                     scales: {
                         x: {
                             grid: { display: false, borderColor: '#333' },
                             ticks: {
                                 color: '#999',
-                                font: function(context) {
+                                font: function (context) {
                                     const index = context.index;
                                     if (index === totalDays - 1) { return { weight: 'bold', color: '#fff' }; }
                                     return { weight: 'normal', color: '#999' };
@@ -1448,45 +1760,45 @@
                         },
                         y: {
                             grid: { color: 'rgba(255, 255, 255, 0.08)', drawBorder: false },
-                            ticks: { color: '#999', callback: function(value) { return value + unitSymbol; } }
+                            ticks: { color: '#999', callback: function (value) { return value + unitSymbol; } }
                         }
                     }
                 }
             });
         }
-        
+
         // --- DATA PROCESSING ---
         function processWeatherData(data) {
-            const totalDays = data.daily.time.length; 
-            const todayIndexInDaily = totalDays - 1; 
+            const totalDays = data.daily.time.length;
+            const todayIndexInDaily = totalDays - 1;
             const yesterdayIndexInDaily = totalDays - 2;
             const unitSymbol = getUnitSymbol();
             const windUnitSymbol = getWindUnitSymbol();
-            
+
             // 1. Current Details
-            const currentTimeISO = data.current_weather.time; 
+            const currentTimeISO = data.current_weather.time;
             let nowHourIndex = -1;
 
             if (currentTimeISO) {
                 const currentTime = new Date(currentTimeISO).getTime();
                 let potentialIndex = data.hourly.time.findIndex(timeStr => new Date(timeStr).getTime() >= currentTime);
-                
+
                 if (potentialIndex === -1 || (potentialIndex > 0 && (new Date(data.hourly.time[potentialIndex]).getTime() - currentTime) > 30 * 60 * 1000)) {
                     nowHourIndex = Math.max(0, potentialIndex - 1);
                 } else if (potentialIndex !== -1) {
                     nowHourIndex = potentialIndex;
                 }
             }
-            if (nowHourIndex === -1) nowHourIndex = 0; 
+            if (nowHourIndex === -1) nowHourIndex = 0;
 
             const currentTempC = data.hourly.temperature_2m[nowHourIndex] || data.current_weather.temperature;
             const rawWindSpeedKmH = data.hourly.wind_speed_10m[nowHourIndex] || 0;
             const currentHumidity = data.hourly.relative_humidity_2m[nowHourIndex] || 'N/A';
-            
+
             const currentTemp = convertTemperature(currentTempC, currentUnit);
             const currentWind = convertWindSpeed(rawWindSpeedKmH, currentWindUnit);
             const todayMaxTemp = convertTemperature(data.daily.temperature_2m_max[todayIndexInDaily], currentUnit);
-            
+
             document.getElementById('current-temp').textContent = `${currentTemp}${unitSymbol}`;
             document.getElementById('current-wind').textContent = `${currentWind}${windUnitSymbol}`;
             document.getElementById('current-humidity').textContent = `${Math.round(currentHumidity)}%`;
@@ -1498,107 +1810,107 @@
             const todayMinC = data.daily.temperature_2m_min[todayIndexInDaily];
             const yesterdayMaxC = data.daily.temperature_2m_max[yesterdayIndexInDaily];
             const yesterdayMinC = data.daily.temperature_2m_min[yesterdayIndexInDaily];
-            
+
             const todayAvg = (todayMaxC + todayMinC) / 2;
             const yesterdayAvg = (yesterdayMaxC + yesterdayMinC) / 2;
             const diff = todayAvg - yesterdayAvg;
-            
+
             let compText = '';
-            if (Math.abs(diff) < 1.5) { compText = 'pretty much the same as yesterday'; } 
-            else if (diff > 0) { compText = `${Math.round(diff)}°C warmer than yesterday`; } 
+            if (Math.abs(diff) < 1.5) { compText = 'pretty much the same as yesterday'; }
+            else if (diff > 0) { compText = `${Math.round(diff)}°C warmer than yesterday`; }
             else { compText = `${Math.round(Math.abs(diff))}°C colder than yesterday`; }
-            
+
             compText = compText.charAt(0).toUpperCase() + compText.slice(1);
             document.getElementById('comparison').textContent = compText;
-            
+
             const weatherDesc = getWeatherDescription(data.daily.weathercode[todayIndexInDaily]);
             document.getElementById('description').textContent = `It will be ${weatherDesc.toLowerCase()} for most of the day.`;
-            
+
             // 3. Time Periods Breakdown
             const hourlyTimeLength = data.hourly.time.length;
             // Dobbiamo trovare il primo giorno intero (le 24 ore di oggi)
             let todayStartFullDayIndex = data.hourly.time.findIndex(timeStr => new Date(timeStr).getHours() === 0 && timeStr.includes(data.daily.time[todayIndexInDaily]));
-            if (todayStartFullDayIndex === -1) { 
+            if (todayStartFullDayIndex === -1) {
                 todayStartFullDayIndex = nowHourIndex; // Fallback to current index
             }
-            
+
             // Trova l'inizio del giorno precedente per il confronto
             const yesterdayStartFullDayIndex = data.hourly.time.findIndex(timeStr => new Date(timeStr).getHours() === 0 && timeStr.includes(data.daily.time[yesterdayIndexInDaily]));
-            
 
-            const periods = [ { name: periodNames.morning, hour: 6 }, { name: periodNames.afternoon, hour: 12 }, { name: periodNames.evening, hour: 18 }, { name: periodNames.night, hour: 23 } ];
+
+            const periods = [{ name: periodNames.morning, hour: 6 }, { name: periodNames.afternoon, hour: 12 }, { name: periodNames.evening, hour: 18 }, { name: periodNames.night, hour: 23 }];
             const periodsHTML = periods.map(period => {
                 const index = todayStartFullDayIndex + period.hour;
                 const indexYesterday = (yesterdayStartFullDayIndex !== -1) ? (yesterdayStartFullDayIndex + period.hour) : index - 24;
-                
+
                 if (!data.hourly.temperature_2m[index] || !data.hourly.temperature_2m[indexYesterday]) return '';
-                
+
                 const tempC = data.hourly.temperature_2m[index];
                 const temp = convertTemperature(tempC, currentUnit);
                 const code = data.hourly.weathercode[index];
-                
+
                 const diffVal = Math.round(data.hourly.temperature_2m[index] - data.hourly.temperature_2m[indexYesterday]);
-                
+
                 let diffClass = 'diff-same';
                 let diffText = `0°C`;
                 if (diffVal > 0) { diffClass = 'diff-warmer'; diffText = `+${diffVal}°C`; } else if (diffVal < 0) { diffClass = 'diff-colder'; diffText = `${diffVal}°C`; }
-                
-                
+
+
                 return `<div class="period-row"><span class="period-name">${period.name}</span><div class="period-temp-group"><div class="period-temp"><span class="temp-value">${temp}${unitSymbol}</span><span class="period-icon">${getWeatherIcon(code)}</span></div><span class="period-diff ${diffClass}">${diffText}</span></div></div>`;
             }).join('');
             document.getElementById('periods').innerHTML = periodsHTML;
-            
+
             // 4. Hourly Forecast 12h
             const hourlyContainer = document.getElementById('hourly-forecast');
             hourlyContainer.innerHTML = '';
-            
+
             for (let i = 0; i < 12; i++) {
-                const index = nowHourIndex + i; 
-                
+                const index = nowHourIndex + i;
+
                 if (!data.hourly.temperature_2m[index]) continue;
-                
+
                 const hour = new Date(data.hourly.time[index]).getHours();
                 const tempC = data.hourly.temperature_2m[index];
                 const temp = convertTemperature(tempC, currentUnit);
                 const code = data.hourly.weathercode[index];
-                
+
                 const hourDisplay = i === 0 ? 'Now' : new Date(data.hourly.time[index]).toLocaleTimeString('en-US', { hour: 'numeric', hour12: true }).replace(' ', '');
-                
+
                 const hourItem = document.createElement('div');
                 hourItem.className = 'hour-item';
                 hourItem.innerHTML = `<span class="hour-time">${hourDisplay}</span><span class="period-icon">${getWeatherIcon(code)}</span><span class="hour-temp">${temp}${unitSymbol}</span>`;
                 hourlyContainer.appendChild(hourItem);
             }
-            
+
             // 5. 24h Summary
             const forecast24hC = data.hourly.temperature_2m.slice(nowHourIndex, nowHourIndex + 24);
             let forecastMax = 'N/A';
             let forecastMin = 'N/A';
-            
+
             if (forecast24hC.length > 0) {
                 const rawMaxC = Math.max(...forecast24hC);
                 const rawMinC = Math.min(...forecast24hC);
-                
+
                 forecastMax = convertTemperature(rawMaxC, currentUnit);
                 forecastMin = convertTemperature(rawMinC, currentUnit);
-                
+
                 const forecastCodes = data.hourly.weathercode.slice(nowHourIndex, nowHourIndex + 24);
                 const codeFrequency = {};
                 forecastCodes.forEach(code => { codeFrequency[code] = (codeFrequency[code] || 0) + 1; });
                 const mostFrequentCode = parseInt(Object.keys(codeFrequency).reduce((a, b) => codeFrequency[a] > codeFrequency[b] ? a : b));
                 const forecastDesc = getWeatherDescription(mostFrequentCode);
-                
+
                 document.getElementById('tomorrow-summary').textContent = `Over the next 24 hours, the weather will be predominantly ${forecastDesc.toLowerCase()}.`;
             } else {
                 document.getElementById('tomorrow-summary').textContent = `Hourly data not available for the next 24 hours.`;
             }
-            
+
             document.getElementById('tomorrow-minmax').innerHTML = `Max: <span class="temp-max">${forecastMax}${unitSymbol}</span> / Min: <span class="temp-min">${forecastMin}${unitSymbol}</span>`;
-            
+
             // Render weekly forecast cards
             renderWeeklyForecast(data);
         }
-        
+
         function renderWeeklyForecast(data) {
             const daily = data.daily;
             const total = daily.time.length;
@@ -1635,16 +1947,17 @@
 
         // Initialize the app on load
         window.addEventListener('DOMContentLoaded', () => {
-            setTemperatureUnit(currentUnit); 
-            setWindUnit(currentWindUnit); 
+            setTemperatureUnit(currentUnit);
+            setWindUnit(currentWindUnit);
             setTheme(currentTheme, false);
-            
+
             // Inizializza l'aggiornamento dell'orologio ogni secondo
-            setInterval(updateTime, 1000); 
+            setInterval(updateTime, 1000);
 
             // Carica i dati una sola volta all'inizio (come da richiesta)
             getLocationAndWeather();
         });
     </script>
 </body>
+
 </html>
