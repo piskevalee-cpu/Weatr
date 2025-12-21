@@ -28,6 +28,9 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
+        /* Ensure Inter is used and bold text renders with correct weight */
+        strong, b { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-weight: 700; }
+
         /* HEADER FISSO */
         .header-wrapper {
             position: fixed;
@@ -242,6 +245,41 @@
         .diff-warmer { color: #ff6b6b; }
         .diff-colder { color: #4dabf7; }
         .diff-same { color: #555; }
+
+        /* WEEKLY FORECAST */
+        .weekly-section { margin-top: 24px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .week-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr); /* Force 7 columns */
+            gap: 12px;
+            margin-top: 12px;
+            align-items: stretch;
+        }
+        .week-card {
+            background: rgba(255,255,255,0.03);
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: center;
+            justify-content: center;
+            min-height: 110px;
+        }
+        .week-day { font-size: 13px; color: #bbb; }
+        .week-icon { width: 26px; height: 26px; color: #888; }
+        .week-temps { font-size: 14px; font-weight: 600; color: #fff; }
+        @media (max-width: 900px) {
+            .week-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                overflow-x: auto;
+                grid-auto-flow: column;
+            }
+        }
+        @media (max-width: 600px) {
+            .week-grid { gap: 8px; }
+        }
         
         /* HOURLY & SUMMARY */
         .extra-section { padding: 30px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
@@ -367,6 +405,34 @@
             color: #fff;
             font-weight: 600; 
         }
+
+        /* Theme icon buttons (no box) */
+        .unit-options .theme-button {
+            background: transparent;
+            border: none;
+            padding: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+
+        /* Selected state for theme icon buttons (dark) */
+        .unit-options .theme-button.selected {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        /* Light mode overrides for theme icon buttons to remove box */
+        body.light-mode .unit-options .theme-button {
+            background: transparent;
+            border: none;
+        }
+
+        body.light-mode .unit-options .theme-button.selected {
+            background: rgba(0,0,0,0.06);
+            border: 1px solid rgba(0,0,0,0.08);
+        }
         
         #city-search-status {
             margin-top: 10px; 
@@ -400,6 +466,238 @@
             .details-grid { grid-template-columns: repeat(2, 1fr); }
             .container { max-width: 100%; padding: 15px; margin-top: 70px; }
         }
+
+    /* LIGHT MODE */
+    body.light-mode {
+        background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+        color: #000000;
+    }
+
+    body.light-mode .header-wrapper {
+        background: rgba(255, 255, 255, 0.7);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    body.light-mode .logo,
+    body.light-mode .location,
+    body.light-mode .time {
+        color: #000;
+    }
+
+    body.light-mode .location-time {
+        color: #666;
+    }
+
+    body.light-mode .search-button {
+        color: #666;
+    }
+
+    body.light-mode .search-button:hover {
+        color: #000;
+    }
+
+    body.light-mode .label {
+        color: #666;
+    }
+
+    body.light-mode .description {
+        color: #555;
+    }
+
+    body.light-mode .comparison {
+        background: linear-gradient(135deg, #000 0%, #333 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    body.light-mode .detail-card {
+        background: rgba(0, 0, 0, 0.04);
+    }
+
+    body.light-mode .detail-card:hover {
+        background: rgba(0, 0, 0, 0.08);
+    }
+
+    body.light-mode .detail-label {
+        color: #666;
+    }
+
+    body.light-mode .detail-value {
+        color: #000;
+    }
+
+    body.light-mode .chart-container {
+        background: rgba(0, 0, 0, 0.02);
+    }
+
+    body.light-mode .period-row,
+    body.light-mode .hour-item {
+        background: rgba(0, 0, 0, 0.03);
+    }
+    body.light-mode .week-card { background: rgba(0, 0, 0, 0.03); }
+    body.light-mode .week-day { color: #666; }
+    body.light-mode .week-temps { color: #000; }
+
+    body.light-mode .period-row:hover,
+    body.light-mode .hour-item:hover {
+        background: rgba(0, 0, 0, 0.06);
+    }
+
+    body.light-mode .period-name,
+    body.light-mode .hour-time {
+        color: #666;
+    }
+
+    body.light-mode .temp-value,
+    body.light-mode .hour-temp {
+        color: #000;
+    }
+
+    body.light-mode .period-icon {
+        color: #666;
+    }
+
+    body.light-mode .main-section,
+    body.light-mode .current-details-section,
+    body.light-mode .chart-section,
+    body.light-mode .periods,
+    body.light-mode .extra-section {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    body.light-mode .footer {
+        color: #666;
+    }
+
+    body.light-mode .contact-info-simple a {
+        color: #000;
+    }
+
+    body.light-mode .contact-info-simple a:hover {
+        color: #666;
+    }
+
+    body.light-mode .credits-section {
+        color: #999;
+    }
+
+    body.light-mode .credits-section a {
+        color: #666;
+    }
+
+    body.light-mode .modal-overlay {
+        background: rgba(255, 255, 255, 0.8);
+    }
+
+    body.light-mode .modal-content {
+        background: rgba(255, 255, 255, 0.95);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    body.light-mode .modal-header {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    body.light-mode .modal-close-btn,
+    body.light-mode .setting-group h4 {
+        color: #000;
+    }
+
+    /* Ensure modal close button has no box in light mode */
+    body.light-mode .modal-close-btn {
+        background: transparent;
+        border: none;
+        color: #000;
+        padding: 0;
+    }
+    body.light-mode .modal-close-btn:hover {
+        color: #666;
+    }
+
+    /* Ensure header search button is clean in light mode */
+    body.light-mode .search-button {
+        background: transparent;
+        border: none;
+        color: #000;
+    }
+    body.light-mode .search-button:hover {
+        color: #000;
+        background: transparent;
+    }
+
+    body.light-mode #city-search-input {
+        background: #f5f5f5;
+        border: 1px solid #ccc;
+        color: #000;
+    }
+
+    body.light-mode #city-search-status {
+        color: #666;
+    }
+
+    body.light-mode .city-result-item {
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    body.light-mode .city-result-item:hover {
+        background: rgba(0, 0, 0, 0.05);
+    }
+
+    body.light-mode button {
+        background: rgba(0, 0, 0, 0.08);
+        color: #000;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    body.light-mode button:hover {
+        background: rgba(0, 0, 0, 0.15);
+    }
+
+    body.light-mode .unit-options button.selected {
+        background: rgba(0, 0, 0, 0.2);
+        border-color: #000;
+        color: #000;
+    }
+
+    body.light-mode .spinner {
+        border: 3px solid rgba(0, 0, 0, 0.1);
+        border-top-color: #000;
+    }
+
+    body.light-mode ::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+    /* Smooth transition */
+    body {
+        transition: background 0.3s ease, color 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* Per-element fade helpers (fade to solid black or white) */
+    .fade-smooth, .fade-smooth * {
+        transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, fill 180ms ease, stroke 180ms ease, box-shadow 180ms ease;
+    }
+
+    /* Fade everything to white */
+    .fade-to-white, .fade-to-white * {
+        color: #000 !important;
+        background-color: #fff !important;
+        border-color: #e6e6e6 !important;
+        fill: #000 !important;
+        stroke: #000 !important;
+        box-shadow: none !important;
+    }
+
+    /* Fade everything to black */
+    .fade-to-black, .fade-to-black * {
+        color: #fff !important;
+        background-color: #000 !important;
+        border-color: rgba(255,255,255,0.08) !important;
+        fill: #fff !important;
+        stroke: #fff !important;
+        box-shadow: none !important;
+    }
+
     </style>
 </head>
 <body>
@@ -465,13 +763,6 @@
                 </div>
             </div>
 
-            <div class="chart-section">
-                <div class="label">Temperature Trend (Max/Min/Avg 7 Days)</div>
-                <div class="chart-container"> 
-                    <canvas id="temp-chart"></canvas>
-                </div>
-            </div>
-
             <div class="periods">
                 <div class="label">Today's Forecast by Time of Day</div>
                 <div class="period-grid" id="periods"></div>
@@ -481,7 +772,19 @@
                 <div class="label">Hourly Forecast (Next 12h)</div>
                 <div class="hourly-forecast" id="hourly-forecast"></div>
             </div>
-            
+
+            <div class="weekly-section">
+                <div class="label">Weekly Forecast</div>
+                <div class="week-grid" id="weekly-forecast"></div>
+            </div>
+
+            <div class="chart-section">
+                <div class="label">Temperature Trend (Max/Min/Avg 7 Days)</div>
+                <div class="chart-container"> 
+                    <canvas id="temp-chart"></canvas>
+                </div>
+            </div>
+
             <div class="extra-section">
                 <div class="label">24h Forecast Summary</div>
                 <div class="tomorrow-group">
@@ -538,6 +841,30 @@
                     <button data-unit="m/s" onclick="setWindUnit('m/s')">m/s</button>
                 </div>
             </div>
+
+            <div class="setting-group">
+                <h4>Theme</h4>
+                <div class="unit-options" id="theme-options">
+                    <button class="theme-button" data-theme="dark" onclick="setTheme('dark')" title="Dark Mode">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
+                    <button class="theme-button" data-theme="light" onclick="setTheme('light')" title="Light Mode">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -548,7 +875,8 @@
         let searchTimeout; 
         
         let currentUnit = localStorage.getItem('tempUnit') || 'C'; 
-        let currentWindUnit = localStorage.getItem('windUnit') || 'km/h'; 
+        let currentWindUnit = localStorage.getItem('windUnit') || 'km/h';
+        let currentTheme = localStorage.getItem('theme') || 'dark';
         let rawWeatherData = null; 
         let currentLatitude = null;
         let currentLongitude = null;
@@ -699,6 +1027,7 @@
 
             navigator.geolocation.getCurrentPosition(
                 async (position) => {
+                    console.debug('Geolocation success:', position.coords.latitude, position.coords.longitude);
                     currentLatitude = position.coords.latitude;
                     currentLongitude = position.coords.longitude;
                     await fetchWeather(currentLatitude, currentLongitude);
@@ -796,6 +1125,7 @@
             showLoading();
             currentLatitude = parseFloat(lat);
             currentLongitude = parseFloat(lon);
+            console.debug('loadSelectedCity coords:', currentLatitude, currentLongitude, 'name:', cityName);
             currentLocationName = cityName;
             document.getElementById('location').textContent = cityName;
             fetchWeather(currentLatitude, currentLongitude, currentLocationName);
@@ -804,13 +1134,37 @@
         // --- MAIN WEATHER FETCH FUNCTION ---
         async function fetchWeather(lat, lon, locationName = null) {
             try {
+                console.debug('fetchWeather called with', lat, lon, 'locationName:', locationName);
                 if (!locationName || locationName.includes('Unknown Location')) { 
-                    const geoResponse = await fetch(
-                        `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`
-                    );
-                    const geoData = await geoResponse.json();
-                    currentLocationName = `${geoData.city || geoData.locality || 'Unknown Location'}, ${geoData.principalSubdivision || ''}`;
-                    document.getElementById('location').textContent = currentLocationName;
+                    try {
+                        const geoResponse = await fetch(
+                            `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`
+                        );
+                        const geoData = await geoResponse.json();
+                        console.debug('BigDataCloud result:', geoData);
+
+                        // Prefer city/locality, then fallback to administrative names
+                        let city = geoData.city || geoData.locality || (geoData.localityInfo && geoData.localityInfo.administrative && geoData.localityInfo.administrative.slice().reverse().find(a => a && a.name) && geoData.localityInfo.administrative.slice().reverse().find(a => a && a.name).name) || null;
+                        let region = geoData.principalSubdivision || geoData.countryName || '';
+
+                        // If BigDataCloud doesn't return a clear city, fallback to Nominatim
+                        if (!city) {
+                            console.debug('BigDataCloud missing city, falling back to Nominatim');
+                            const nomRes = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json&accept-language=en`);
+                            const nomData = await nomRes.json();
+                            console.debug('Nominatim result:', nomData);
+                            const addr = nomData && nomData.address;
+                            city = addr && (addr.city || addr.town || addr.village || addr.county || addr.hamlet);
+                            region = region || (addr && (addr.state || addr.county || addr.region));
+                        }
+
+                        currentLocationName = city ? `${city}${region ? ', ' + region : ''}` : 'Unknown Location';
+                        document.getElementById('location').textContent = currentLocationName;
+                    } catch (geoErr) {
+                        console.warn('Reverse geocode failed:', geoErr);
+                        currentLocationName = 'Unknown Location';
+                        document.getElementById('location').textContent = currentLocationName;
+                    }
                 } else {
                     currentLocationName = locationName;
                 }
@@ -871,6 +1225,53 @@
             }
         }
 
+        function setTheme(theme, animate = true) {
+            currentTheme = theme;
+            localStorage.setItem('theme', theme);
+
+            const FADE_MS = 160;
+
+            const applyThemeAndRender = () => {
+                if (theme === 'light') {
+                    document.body.classList.add('light-mode');
+                } else {
+                    document.body.classList.remove('light-mode');
+                }
+
+                document.querySelectorAll('#theme-options button').forEach(btn => {
+                    btn.classList.remove('selected');
+                    if (btn.dataset.theme === theme) {
+                        btn.classList.add('selected');
+                    }
+                });
+
+                if (rawWeatherData) {
+                    renderHistoricalChart(rawWeatherData);
+                }
+            };
+
+            if (!animate) {
+                applyThemeAndRender();
+                return;
+            }
+
+            // Fade elements to a solid (white for light, black for dark), then apply theme and fade back
+            const toWhite = theme === 'light';
+            document.body.classList.add('fade-smooth');
+            document.body.classList.add(toWhite ? 'fade-to-white' : 'fade-to-black');
+
+            setTimeout(() => {
+                // Apply the theme while elements are the solid color
+                applyThemeAndRender();
+
+                // Small delay to let DOM update, then remove fade classes to reveal final theme
+                setTimeout(() => {
+                    document.body.classList.remove(toWhite ? 'fade-to-white' : 'fade-to-black');
+                    // keep .fade-smooth for subsequent transitions
+                }, 60);
+            }, FADE_MS);
+        }
+
         function openSearchModal() {
             document.getElementById('search-modal').classList.add('active');
             
@@ -884,6 +1285,13 @@
             document.querySelectorAll('#wind-unit-options button').forEach(btn => {
                 btn.classList.remove('selected');
                 if (btn.dataset.unit === currentWindUnit) {
+                    btn.classList.add('selected');
+                }
+            });
+
+            document.querySelectorAll('#theme-options button').forEach(btn => {
+                btn.classList.remove('selected');
+                if (btn.dataset.theme === currentTheme) {
                     btn.classList.add('selected');
                 }
             });
@@ -1162,12 +1570,50 @@
             
             document.getElementById('tomorrow-minmax').innerHTML = `Max: <span class="temp-max">${forecastMax}${unitSymbol}</span> / Min: <span class="temp-min">${forecastMin}${unitSymbol}</span>`;
             
+            // Render weekly forecast cards
+            renderWeeklyForecast(data);
+        }
+        
+        function renderWeeklyForecast(data) {
+            const daily = data.daily;
+            const total = daily.time.length;
+            const unit = getUnitSymbol();
+            const container = document.getElementById('weekly-forecast');
+            if (!container) return;
+            container.innerHTML = '';
+
+            // Show only the next 7 days (including today). Take the last 7 entries.
+            const start = Math.max(0, total - 7);
+            for (let i = start; i < total; i++) {
+                const dateStr = daily.time[i];
+                const date = new Date(dateStr);
+                const isToday = (i === total - 1);
+
+                // Format DD/MM
+                const dayNum = String(date.getDate()).padStart(2, '0');
+                const monthNum = String(date.getMonth() + 1).padStart(2, '0');
+                const dayLabel = `${dayNum}/${monthNum}`;
+
+                const max = convertTemperature(daily.temperature_2m_max[i], currentUnit);
+                const min = convertTemperature(daily.temperature_2m_min[i], currentUnit);
+                const code = daily.weathercode[i];
+
+                const card = document.createElement('div');
+                card.className = 'week-card';
+                card.innerHTML = `<div class="week-day">${dayLabel}</div><div class="week-icon">${getWeatherIcon(code)}</div><div class="week-temps">${max}${unit} / <span style="color:#aaa;font-weight:500">${min}${unit}</span></div>`;
+                if (isToday) {
+                    card.style.border = '1px solid rgba(255,255,255,0.12)';
+                    card.style.boxShadow = '0 6px 18px rgba(0,0,0,0.35)';
+                }
+                container.appendChild(card);
+            }
         }
 
         // Initialize the app on load
         window.addEventListener('DOMContentLoaded', () => {
             setTemperatureUnit(currentUnit); 
             setWindUnit(currentWindUnit); 
+            setTheme(currentTheme, false);
             
             // Inizializza l'aggiornamento dell'orologio ogni secondo
             setInterval(updateTime, 1000); 
@@ -1178,4 +1624,3 @@
     </script>
 </body>
 </html>
-
