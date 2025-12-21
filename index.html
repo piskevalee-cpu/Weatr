@@ -266,6 +266,18 @@
             align-items: center;
             justify-content: center;
             min-height: 110px;
+            transition: background 0.18s ease, box-shadow 0.18s ease;
+        }
+        /* Hover now matches .period-row (no lift, subtle bg change) */
+        .week-card:hover {
+            background: rgba(255,255,255,0.05);
+            box-shadow: none;
+        }
+        .week-card--today {
+            border: none; /* no border for today's card per user request */
+        }
+        .week-card--today:hover {
+            background: rgba(255,255,255,0.06);
         }
         .week-day { font-size: 13px; color: #bbb; }
         .week-icon { width: 26px; height: 26px; color: #888; }
@@ -537,6 +549,10 @@
     body.light-mode .week-card { background: rgba(0, 0, 0, 0.03); }
     body.light-mode .week-day { color: #666; }
     body.light-mode .week-temps { color: #000; }
+    /* Match hover with period-row in light mode */
+    body.light-mode .week-card:hover { background: rgba(0,0,0,0.06); box-shadow: none; }
+    body.light-mode .week-card--today { border: none; }
+    body.light-mode .week-card--today:hover { background: rgba(0,0,0,0.08); }
 
     body.light-mode .period-row:hover,
     body.light-mode .hour-item:hover {
@@ -1602,8 +1618,7 @@
                 card.className = 'week-card';
                 card.innerHTML = `<div class="week-day">${dayLabel}</div><div class="week-icon">${getWeatherIcon(code)}</div><div class="week-temps">${max}${unit} / <span style="color:#aaa;font-weight:500">${min}${unit}</span></div>`;
                 if (isToday) {
-                    card.style.border = '1px solid rgba(255,255,255,0.12)';
-                    card.style.boxShadow = '0 6px 18px rgba(0,0,0,0.35)';
+                    card.classList.add('week-card--today');
                 }
                 container.appendChild(card);
             }
@@ -1624,3 +1639,4 @@
     </script>
 </body>
 </html>
+
